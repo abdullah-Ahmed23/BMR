@@ -8,7 +8,7 @@ import { CheckCircle2, Target, TrendingUp, Award, BarChart3, Sparkles } from "lu
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import heroBg from "@/assets/hero-bg.jpg";
-import Darkveil  from '../components/ui/DarkVeil';
+import Darkveil  from '../components/ui/darkveil'
 
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
