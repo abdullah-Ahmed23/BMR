@@ -8,9 +8,50 @@ import { Label } from "@/components/ui/label";
 import { CheckCircle2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import emailjs from "emailjs-com";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const StrategyCall = () => {
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const templateParams = {
+    FirstName: formData.firstName,
+    LastName: formData.lastName,
+    Email: formData.email,
+    Phone: formData.phone,
+    CompanyName: formData.company,
+    Website: formData.website,
+    RevenueRange: formData.revenue,
+    Goals: formData.goals,
+    Timeline: formData.timeline,
+    time: new Date().toLocaleString(),
+  };
+
+  try {
+    await emailjs.send(
+      "service_1po8ofe", // Service ID
+      "template_q1cypuo",  // Template ID
+      templateParams,
+      "uDt6VwT2Ou41smT7M"    // ⚠️ Replace with your EmailJS public key
+    );
+    alert("✅ Your call has been scheduled successfully! We'll contact you soon.");
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      company: "",
+      website: "",
+      revenue: "",
+      goals: "",
+      timeline: "",
+    });
+  } catch (error) {
+    console.error("EmailJS Error:", error);
+    alert("❌ Failed to send. Please try again later.");
+  }
+};
 
  const location = useLocation();
 
@@ -115,7 +156,8 @@ const handleChange = (
               <Card className="border-primary/20">
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold mb-6">Schedule Your Call</h2>
-                  <form className="space-y-6">
+                 <form className="space-y-6" onSubmit={handleSubmit}>
+
   <div className="grid sm:grid-cols-2 gap-4">
     <div>
       <Label htmlFor="firstName">First Name *</Label>

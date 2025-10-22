@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import emailjs from "emailjs-com";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useLocation } from "react-router-dom";
@@ -11,6 +12,34 @@ import Footer from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Contact = () => {
+
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+
+  const templateParams = {
+    title: "New Contact Message - BMR Growth",
+    FirstName: formData.firstName,
+    LastName: formData.lastName,
+    Email: formData.email,
+    Phone: formData.phone,
+    Company: formData.company,
+    message: formData.message,
+    time: new Date().toLocaleString(),
+  };
+
+  emailjs
+    .send(
+      "service_1po8ofe", // 🔹 from EmailJS dashboard
+      "template_i4q3plq", // 🔹 your template
+      templateParams,
+      "uDt6VwT2Ou41smT7M" // ✅ your public key
+    )
+    .then(
+      () => alert("✅ Message sent successfully!"),
+      () => alert("❌ Failed to send. Please try again later.")
+    );
+};
+
 
    const location = useLocation();
 const [formData, setFormData] = useState({
@@ -108,7 +137,8 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
               <Card className="border-primary/20">
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-                <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
+
   <div className="grid sm:grid-cols-2 gap-4">
     <div>
       <Label htmlFor="firstName">First Name</Label>
