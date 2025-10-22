@@ -1,0 +1,7 @@
+# robots.txt for BMRGrowth Strategic Branding Agency
+User-agent: *
+Allow: /
+Sitemap: https://bmrgrowth.lovable.app/sitemap.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 1
