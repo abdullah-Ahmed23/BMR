@@ -107,15 +107,7 @@ const Footer = () => {
                   <span>hello@bmrgrowth.com</span>
                 </a>
               </li>
-              <li>
-                <a
-                  href="tel:+1234567890"
-                  className="text-sm text-white/80 hover:text-primary-light transition-colors flex items-center space-x-2"
-                >
-                  <Phone className="h-4 w-4" />
-                  <span>+1 (234) 567-890</span>
-                </a>
-              </li>
+
             </ul>
           </div>
         </div>

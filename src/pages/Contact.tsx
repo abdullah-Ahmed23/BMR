@@ -52,18 +52,6 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
       link: "mailto:hello@bmrgrowth.com",
     },
     {
-      icon: Phone,
-      title: "Call Us",
-      info: "+1 (234) 567-890",
-      link: "tel:+1234567890",
-    },
-    {
-      icon: MapPin,
-      title: "Visit Us",
-      info: "123 Business Ave, Suite 100, City, State 12345",
-      link: "#",
-    },
-    {
       icon: Clock,
       title: "Business Hours",
       info: "Monday - Friday: 9:00 AM - 6:00 PM",
